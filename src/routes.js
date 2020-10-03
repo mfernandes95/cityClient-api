@@ -5,7 +5,9 @@ import ClientController from "./app/controllers/ClientController";
 
 const routes = new Router();
 // CITY
-routes.post("/cities", CityController.store);
+routes.post("/cities", CityController.createCity);
+routes.get("/name-city/:name", CityController.getCityByName);
+routes.get("/uf-city/:uf", CityController.getCityByUf);
 
 // CLIENT
 routes.post("/clients", ClientController.createClient);
