@@ -1,11 +1,13 @@
 import { Router } from "express";
 
-const routes = new Router();
+import CityController from "./app/controllers/CityController";
+import CustomerController from "./app/controllers/CustomerController";
 
-routes.get("/", (req, res) => {
-  console.log("HERRRR");
-  return res.status(200).json({ message: "Hello world!" });
-});
-// routes.post("/appointments", AppointmentController.store);
+const routes = new Router();
+// CITY
+routes.post("/cities", CityController.store);
+
+// CLIENT
+routes.post("/customers", CustomerController.store);
 
 export default routes;
