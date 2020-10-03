@@ -9,5 +9,8 @@ routes.post("/cities", CityController.store);
 
 // CLIENT
 routes.post("/clients", ClientController.store);
+routes.get("/clients/:id", ClientController.show);
+routes.delete("/clients/:id", ClientController.delete);
+routes.put("/clients/:id", ClientController.update);
 
 export default routes;
