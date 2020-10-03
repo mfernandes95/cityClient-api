@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  db_mongo:
+    container_name: mongo_cityclientapi
+    image: mongo:3.4.21-xenial
+    ports:
+      - 27017:27017
+    networks:
+      - cityclientapi
+    restart: on-failure
+    volumes:
+      - "./src/database/mongo:/var/lib/mongodb/data"
+
+  node:
+    build: .
+    networks:
+      - cityclientapi
+    links:
+      - db_mongo
+    depends_on:
+      - db_mongo
+    container_name: "node_cityclientapi"
+    volumes:
+      - .:/usr/app
+    ports:
+      - 3333:3333
+    command: "sh /usr/app/start.sh"
+  # env_file: .dockerenv
+
+networks:
+  cityclientapi:
