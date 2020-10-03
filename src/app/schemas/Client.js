@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const CustomerSchema = new mongoose.Schema(
+const ClientSchema = new mongoose.Schema(
   {
     full_name: {
       type: String,
@@ -12,7 +12,7 @@ const CustomerSchema = new mongoose.Schema(
     },
     year_of_birth: {
       type: Date,
-      // required: true,
+      required: true,
     },
     age: {
       type: Number,
@@ -28,4 +28,4 @@ const CustomerSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Client", CustomerSchema);
+export default mongoose.model("Client", ClientSchema);
