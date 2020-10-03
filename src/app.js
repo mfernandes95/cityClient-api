@@ -3,6 +3,9 @@
 import express from "express";
 import routes from "./routes";
 
+import swaggerJsDoc from "./swagger.json";
+import swaggerUi from "swagger-ui-express";
+
 import "./database";
 
 class App {
@@ -11,6 +14,7 @@ class App {
 
     this.middlewares();
     this.routes();
+    this.swagger();
   }
 
   middlewares() {
@@ -19,6 +23,14 @@ class App {
 
   routes() {
     this.server.use(routes);
+  }
+
+  swagger() {
+    this.server.use(
+      "/api-docs",
+      swaggerUi.serve,
+      swaggerUi.setup(swaggerJsDoc)
+    );
   }
 }
 
