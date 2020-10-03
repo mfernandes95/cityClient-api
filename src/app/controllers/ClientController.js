@@ -1,10 +1,8 @@
 import Client from "../schemas/Client";
 
 class ClientController {
-  async store(req, res) {
+  async createClient(req, res) {
     try {
-      console.log(req.body);
-
       const client = await Client.create(req.body);
       return res.status(201).json({ client: client });
     } catch (error) {
@@ -12,7 +10,20 @@ class ClientController {
     }
   }
 
-  async show(req, res) {
+  async getClientByName(req, res) {
+    try {
+      const client = await Client.findOne({ full_name: req.params.name });
+
+      if (!client)
+        return res.status(404).json({ message: "Client not found!" });
+
+      return res.status(200).json({ client: client });
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
+
+  async getClientById(req, res) {
     try {
       const client = await Client.findById(req.params.id);
 
@@ -25,7 +36,7 @@ class ClientController {
     }
   }
 
-  async delete(req, res) {
+  async deleteClientById(req, res) {
     try {
       const client = await Client.findByIdAndDelete(req.params.id);
 
@@ -38,7 +49,7 @@ class ClientController {
     }
   }
 
-  async update(req, res) {
+  async updateClientById(req, res) {
     try {
       const client = await Client.findByIdAndUpdate(
         req.params.id,
