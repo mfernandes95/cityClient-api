@@ -4,10 +4,12 @@ const CitySchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      unique: true,
       required: true,
     },
     uf: {
       type: String,
+      unique: true,
       required: true,
     },
   },

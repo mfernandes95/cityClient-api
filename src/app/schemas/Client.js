@@ -5,6 +5,7 @@ const ClientSchema = new mongoose.Schema(
     full_name: {
       type: String,
       required: true,
+      unique: true,
     },
     gender: {
       type: String,

@@ -3,7 +3,7 @@ version: "3"
 services:
   db_mongo:
     container_name: mongo_cityclientapi
-    image: mongo:3.4.21-xenial
+    image: mongo:3.6.20-xenial
     ports:
       - 27017:27017
     networks:
