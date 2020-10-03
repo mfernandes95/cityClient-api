@@ -40,9 +40,13 @@ class ClientController {
 
   async update(req, res) {
     try {
-      const client = await Client.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-      });
+      const client = await Client.findByIdAndUpdate(
+        req.params.id,
+        { full_name: req.body.full_name },
+        {
+          new: true,
+        }
+      );
 
       if (!client)
         return res.status(404).json({ message: "Client not found!" });
