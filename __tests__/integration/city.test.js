@@ -5,11 +5,11 @@ import mongoose from "mongoose";
 import City from "../../src/app/schemas/City";
 
 const cityPayload = {
-  name: "Paulńia",
+  name: "Paulínia",
   uf: "SP",
 };
 
-describe("Sum", () => {
+describe("City", () => {
   beforeAll(async () => {
     if (!process.env.MONGO_URL)
       throw new Error("MongoDB server not initialized");
@@ -19,6 +19,9 @@ describe("Sum", () => {
       useUnifiedTopology: true,
       // useFindAndModify: true,
       useCreateIndex: true,
+      // useNewUrlParser: true,
+      // useFindAndModify: true,
+      // useUnifiedTopology: true,
     });
   });
 
@@ -30,15 +33,6 @@ describe("Sum", () => {
     await City.deleteMany({});
   });
 
-  it("sum two numbers", async () => {
-    const x = 4;
-    const y = 2;
-
-    const sum = x + y;
-
-    expect(sum).toBe(6);
-  });
-
   it("Should create a client", async () => {
     // const city = await City.create({
     //   name: "Paulínia",
@@ -47,5 +41,21 @@ describe("Sum", () => {
     const response = await request(app).post("/cities").send(cityPayload);
 
     expect(response.status).toBe(201);
+  });
+
+  it("Should get client by NAME", async () => {
+    const city = await City.create(cityPayload);
+
+    const response = await request(app).get(`/name-cities/${city.name}`);
+
+    expect(response.status).toBe(200);
+  });
+
+  it("Should get client by UF", async () => {
+    const city = await City.create(cityPayload);
+
+    const response = await request(app).get(`/uf-cities/${city.uf}`);
+
+    expect(response.status).toBe(200);
   });
 });
