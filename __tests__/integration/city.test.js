@@ -1,7 +1,7 @@
 import request from "supertest";
 import app from "../../src/app";
 
-import mongoose from "mongoose";
+import Mongo from "..//utils/mongo";
 import City from "../../src/app/schemas/City";
 
 const cityPayload = {
@@ -14,19 +14,11 @@ describe("City", () => {
     if (!process.env.MONGO_URL)
       throw new Error("MongoDB server not initialized");
 
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      // useFindAndModify: true,
-      useCreateIndex: true,
-      // useNewUrlParser: true,
-      // useFindAndModify: true,
-      // useUnifiedTopology: true,
-    });
+    await Mongo.mongoConnect(process.env.MONGO_URL);
   });
 
   afterAll(async () => {
-    await mongoose.connection.close();
+    await Mongo.mongoCloseConnect;
   });
 
   beforeEach(async () => {
