@@ -51,11 +51,23 @@ describe("City", () => {
     expect(response.status).toBe(200);
   });
 
+  it("Should return error 400 when get client by NAME nonexistent", async () => {
+    const response = await request(app).get("/name-cities/sasasa");
+
+    expect(response.status).toBe(400);
+  });
+
   it("Should get client by UF", async () => {
     const city = await City.create(cityPayload);
 
     const response = await request(app).get(`/uf-cities/${city.uf}`);
 
     expect(response.status).toBe(200);
+  });
+
+  it("Should return error 400 when get client by UF nonexistent", async () => {
+    const response = await request(app).get("/uf-cities/sjaosja");
+
+    expect(response.status).toBe(400);
   });
 });

@@ -50,6 +50,12 @@ describe("Client", () => {
     expect(response.status).toBe(200);
   });
 
+  it("Should return error 400 when get client by ID nonexistent", async () => {
+    const response = await request(app).get("/clients/123");
+
+    expect(response.status).toBe(400);
+  });
+
   it("Should get client by NAME", async () => {
     const client = await Client.create(clientPayload);
 
@@ -60,12 +66,24 @@ describe("Client", () => {
     expect(response.status).toBe(200);
   });
 
+  it("Should return error 400 when get client by NAME nonexistent", async () => {
+    const response = await request(app).get("/name-clients/joaoa");
+
+    expect(response.status).toBe(400);
+  });
+
   it("Should delete client by ID", async () => {
     const client = await Client.create(clientPayload);
 
     const response = await request(app).delete(`/clients/${client.id}`);
 
     expect(response.status).toBe(200);
+  });
+
+  it("Should return error 400 when delete client by ID nonexistent", async () => {
+    const response = await request(app).delete("/clients/123");
+
+    expect(response.status).toBe(400);
   });
 
   it("Should update client NAME by ID", async () => {
@@ -76,5 +94,13 @@ describe("Client", () => {
       .send({ name: "Joao Paulo Silva" });
 
     expect(response.status).toBe(200);
+  });
+
+  it("Should return error 400 when update client NAME by ID nonexistent", async () => {
+    const response = await request(app)
+      .put("/clients/123")
+      .send({ name: "Joao Paulo Silva" });
+
+    expect(response.status).toBe(400);
   });
 });
