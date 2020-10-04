@@ -1,7 +1,7 @@
 import request from "supertest";
 import app from "../../src/app";
 
-import Mongo from "..//utils/mongo";
+import Mongo from "../utils/mongo";
 
 import Client from "../../src/app/schemas/Client";
 

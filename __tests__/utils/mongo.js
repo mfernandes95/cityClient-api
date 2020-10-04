@@ -5,11 +5,7 @@ class Mongo {
     return await mongoose.connect(mongoUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      // useFindAndModify: true,
       useCreateIndex: true,
-      // useNewUrlParser: true,
-      // useFindAndModify: true,
-      // useUnifiedTopology: true,
     });
   }
 

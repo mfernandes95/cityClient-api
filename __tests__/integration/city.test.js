@@ -1,7 +1,7 @@
 import request from "supertest";
 import app from "../../src/app";
 
-import Mongo from "..//utils/mongo";
+import Mongo from "../utils/mongo";
 import City from "../../src/app/schemas/City";
 
 const cityPayload = {
@@ -26,10 +26,6 @@ describe("City", () => {
   });
 
   it("Should create a client", async () => {
-    // const city = await City.create({
-    //   name: "Paulínia",
-    //   uf: "SP",
-    // });
     const response = await request(app).post("/cities").send(cityPayload);
 
     expect(response.status).toBe(201);
