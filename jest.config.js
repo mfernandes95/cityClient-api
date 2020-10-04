@@ -22,6 +22,7 @@ module.exports = {
     "src/**",
     "!src/database/schemas/**",
     "!src/swagger.json",
+    "!src/server.js",
   ],
 
   // The directory where Jest should output its coverage files
