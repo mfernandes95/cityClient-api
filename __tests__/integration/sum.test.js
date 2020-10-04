@@ -14,6 +14,14 @@ describe("Sum", () => {
     });
   });
 
+  afterAll(async () => {
+    await mongoose.connection.close();
+  });
+
+  beforeEach(async () => {
+    await City.deleteMany({});
+  });
+
   it("sum two numbers", async () => {
     const x = 4;
     const y = 2;
@@ -24,15 +32,11 @@ describe("Sum", () => {
   });
 
   it("Should sum two numbers", async () => {
-    console.log("CITY", City);
-
     const city = await City.create({
-      name: "Pinda",
-      uf: "PO",
+      name: "Paulínia",
+      uf: "SP",
     });
 
-    console.log("CITY", city);
-
-    expect(city.name).toBe("Pinda");
+    expect(city.name).toBe("Paulínia");
   });
 });
