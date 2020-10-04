@@ -47,9 +47,6 @@
             }
           },
           "400": {
-            "description": "User already exists."
-          },
-          "400": {
             "description": "Failed. Bad post data."
           }
         }
@@ -83,8 +80,8 @@
               "$ref": "#/definitions/City"
             }
           },
-          "404": {
-            "description": "Failed. City not found."
+          "400": {
+            "description": "Failed. Bad post data."
           }
         }
       }
@@ -117,8 +114,8 @@
               "$ref": "#/definitions/City"
             }
           },
-          "404": {
-            "description": "Failed. City not found."
+          "400": {
+            "description": "Failed. Bad post data."
           }
         }
       }
@@ -184,8 +181,8 @@
               "$ref": "#/definitions/Client"
             }
           },
-          "404": {
-            "description": "Failed. Client not found."
+          "400": {
+            "description": "Failed. Bad post data."
           }
         }
       },
@@ -210,8 +207,8 @@
               "$ref": "#/definitions/id"
             }
           },
-          "404": {
-            "description": "Failed. Clients not found."
+          "400": {
+            "description": "Failed. Bad post data."
           }
         }
       },
@@ -249,9 +246,6 @@
           },
           "400": {
             "description": "Failed. Bad post data."
-          },
-          "404": {
-            "description": "Failed. Client not found."
           }
         }
       }
@@ -284,8 +278,8 @@
               "$ref": "#/definitions/Client"
             }
           },
-          "404": {
-            "description": "Failed. Client not found."
+          "400": {
+            "description": "Failed. Bad post data."
           }
         }
       }
