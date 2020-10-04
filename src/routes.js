@@ -12,8 +12,8 @@ routes.get("/uf-cities/:uf", CityController.getCityByUf);
 // CLIENT
 routes.post("/clients", ClientController.createClient);
 routes.get("/clients/:id", ClientController.getClientById);
-routes.get("/name-clients/:name", ClientController.getClientByName);
 routes.delete("/clients/:id", ClientController.deleteClientById);
 routes.put("/clients/:id", ClientController.updateClientById);
+routes.get("/name-clients/:name", ClientController.getClientByName);
 
 export default routes;
