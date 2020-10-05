@@ -1,5 +1,11 @@
 # CityClient-api
 
+- NodeJs API using Express
+- Database using MongoDB
+- TDD using Jest
+- Containerization using Docker
+- Documentation using Swagger
+
 ## Run
 
 ```bash
