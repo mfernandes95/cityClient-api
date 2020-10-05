@@ -1,8 +1,8 @@
 import request from "supertest";
 import app from "../../src/app";
 
-import MongoConnection from "../utils/MongoConnection";
-import MongoConnectionClose from "../utils/MongoConnectionClose";
+import MongoConnection from "../utils/mongo/MongoConnection";
+import MongoConnectionClose from "../utils/mongo/MongoConnectionClose";
 
 import Client from "../../src/app/schemas/Client";
 
@@ -23,7 +23,6 @@ describe("Client", () => {
   });
 
   afterAll(async (done) => {
-    // await mongoose.connection.close();
     await MongoConnectionClose();
 
     done();

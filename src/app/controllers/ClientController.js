@@ -1,6 +1,6 @@
 import Client from "../schemas/Client";
 
-import verifyTransaction from "../services/verifyTransaction";
+import VerifyTransaction from "../services/VerifyTransaction";
 
 class ClientController {
   async createClient(req, res) {
@@ -16,7 +16,7 @@ class ClientController {
     try {
       const client = await Client.findOne({ full_name: req.params.name });
 
-      verifyTransaction(client, "Client");
+      VerifyTransaction(client, "Client");
       return res.status(200).json({ client: client });
     } catch (error) {
       return res.status(400).json({ error: error.message });
@@ -27,7 +27,7 @@ class ClientController {
     try {
       const client = await Client.findById(req.params.id);
 
-      verifyTransaction(client, "Client");
+      VerifyTransaction(client, "Client");
       return res.status(200).json({ client: client });
     } catch (error) {
       return res.status(400).json({ error: error.message });
@@ -38,7 +38,7 @@ class ClientController {
     try {
       const client = await Client.findByIdAndDelete(req.params.id);
 
-      verifyTransaction(client, "Client");
+      VerifyTransaction(client, "Client");
       return res.status(200).json({ message: "Client removed!" });
     } catch (error) {
       return res.status(400).json({ error: error.message });
@@ -55,7 +55,7 @@ class ClientController {
         }
       );
 
-      verifyTransaction(client, "Client");
+      VerifyTransaction(client, "Client");
       return res.status(200).json({ client: client });
     } catch (error) {
       return res.status(400).json({ error: error.message });

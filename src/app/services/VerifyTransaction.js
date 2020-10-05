@@ -1,4 +1,4 @@
-export default function verifyTransaction(transaction, entity) {
+export default function VerifyTransaction(transaction, entity) {
   if (!transaction) throw Error(`${entity} not found!`);
 
   return;

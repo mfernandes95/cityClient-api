@@ -1,9 +1,8 @@
 import request from "supertest";
 import app from "../../src/app";
 
-import mongoose from "mongoose";
-import MongoConnection from "../utils/MongoConnection";
-import MongoConnectionClose from "../utils/MongoConnectionClose";
+import MongoConnection from "../utils/mongo/MongoConnection";
+import MongoConnectionClose from "../utils/mongo/MongoConnectionClose";
 
 import City from "../../src/app/schemas/City";
 

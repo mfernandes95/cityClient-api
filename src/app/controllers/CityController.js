@@ -1,6 +1,6 @@
 import City from "../schemas/City";
 
-import verifyTransaction from "../services/verifyTransaction";
+import VerifyTransaction from "../services/VerifyTransaction";
 
 class CityController {
   async createCity(req, res) {
@@ -15,7 +15,7 @@ class CityController {
     try {
       const city = await City.findOne({ name: req.params.name });
 
-      verifyTransaction(city, "City");
+      VerifyTransaction(city, "City");
       return res.status(200).json({ city: city });
     } catch (error) {
       return res.status(400).json({ error: error.message });
@@ -26,7 +26,7 @@ class CityController {
     try {
       const city = await City.findOne({ uf: req.params.uf });
 
-      verifyTransaction(city, "City");
+      VerifyTransaction(city, "City");
       return res.status(200).json({ city: city });
     } catch (error) {
       return res.status(400).json({ error: error.message });
