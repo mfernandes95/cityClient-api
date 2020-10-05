@@ -23,8 +23,8 @@ describe("Client", () => {
   });
 
   afterAll(async (done) => {
-    // await Mongo.mongoCloseConnect;
-    await mongoose.connection.close();
+    await Mongo.mongoCloseConnect;
+    // await mongoose.connection.close();
     done();
   });
 
