@@ -5,6 +5,7 @@
 - TDD using Jest
 - Containerization using Docker
 - Documentation using Swagger
+- CI using GitHub Actions
 
 ## Run
 
