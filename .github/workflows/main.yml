@@ -27,11 +27,5 @@ jobs:
         run: yarn
 
       # Runs a set of commands using the runners shell
-      - name: Run tests
+      - name: unit test
         run: yarn test
-
-      # - name: e2e test
-      #   run: npm run test:e2e
-
-      # - name: test coverage
-      #   run: npm run test:cov
