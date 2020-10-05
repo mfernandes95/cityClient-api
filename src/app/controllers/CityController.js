@@ -1,5 +1,7 @@
 import City from "../schemas/City";
 
+import verifyTransaction from "../services/verifyTransaction";
+
 class CityController {
   async createCity(req, res) {
     try {
@@ -13,7 +15,7 @@ class CityController {
     try {
       const city = await City.findOne({ name: req.params.name });
 
-      verifyExists(city);
+      verifyTransaction(city, "City");
       return res.status(200).json({ city: city });
     } catch (error) {
       return res.status(400).json({ error: error.message });
@@ -24,18 +26,12 @@ class CityController {
     try {
       const city = await City.findOne({ uf: req.params.uf });
 
-      verifyExists(city);
+      verifyTransaction(city, "City");
       return res.status(200).json({ city: city });
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }
   }
-}
-
-function verifyExists(city) {
-  if (!city) throw Error("City not found!");
-
-  return;
 }
 
 export default new CityController();
