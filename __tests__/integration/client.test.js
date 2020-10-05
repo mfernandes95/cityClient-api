@@ -1,8 +1,8 @@
 import request from "supertest";
 import app from "../../src/app";
 
-import mongoose from "mongoose";
-import Mongo from "../utils/mongo";
+import MongoConnection from "../utils/MongoConnection";
+import MongoConnectionClose from "../utils/MongoConnectionClose";
 
 import Client from "../../src/app/schemas/Client";
 
@@ -19,12 +19,13 @@ describe("Client", () => {
     if (!process.env.MONGO_URL)
       throw new Error("MongoDB server not initialized");
 
-    await Mongo.mongoConnect(process.env.MONGO_URL);
+    await MongoConnection(process.env.MONGO_URL);
   });
 
   afterAll(async (done) => {
-    // await Mongo.mongoCloseConnect;
-    await mongoose.connection.close();
+    // await mongoose.connection.close();
+    await MongoConnectionClose();
+
     done();
   });
 
