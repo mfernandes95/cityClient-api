@@ -1,6 +1,7 @@
 import request from "supertest";
 import app from "../../src/app";
 
+import mongoose from "mongoose";
 import Mongo from "../utils/mongo";
 import City from "../../src/app/schemas/City";
 
@@ -17,8 +18,11 @@ describe("City", () => {
     await Mongo.mongoConnect(process.env.MONGO_URL);
   });
 
-  afterAll(async () => {
-    await Mongo.mongoCloseConnect;
+  afterAll(async (done) => {
+    // await Mongo.mongoCloseConnect;
+    await mongoose.connection.close();
+
+    done();
   });
 
   beforeEach(async () => {
